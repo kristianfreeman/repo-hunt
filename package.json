@@ -1,0 +1,19 @@
+{
+  "name": "repo-hunt",
+  "version": "0.9.9",
+  "description": "find new github packages every day! powered by workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'"
+  },
+  "author": "Kristian Freeman <kristian@kristianfreeman.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  },
+  "dependencies": {
+    "qs": "^6.7.0",
+    "uuid": "^3.3.2"
+  }
+}
