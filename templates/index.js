@@ -1,6 +1,6 @@
 const layout = require('./layout')
 const uuid = require('uuid/v3')
-const orderRepos = (a, b) => a.votes_count < b.votes_count
+const orderRepos = (a, b) => b.votes_count - a.votes_count
 
 const illustration = require('./illustration')
 
