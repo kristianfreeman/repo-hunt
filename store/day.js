@@ -2,6 +2,12 @@ const Repo = require('./repo')
 
 const today = () => new Date().toLocaleDateString()
 
+const todayData = async () => {
+  const date = today()
+  const persisted = await REPO_HUNT.get(date)
+  return persisted ? JSON.parse(persisted) : []
+}
+
 module.exports = {
   clear: function() {
     const date = today()
@@ -9,16 +15,12 @@ module.exports = {
   },
 
   getRepos: async function() {
-    const date = today()
-    const persisted = await REPO_HUNT.get(date)
-    const ids = persisted ? JSON.parse(persisted) : []
+    const ids = await todayData()
     return ids.length ? Repo.findMany(ids) : []
   },
 
   add: async function(id) {
-    const date = today()
-    const persisted = await REPO_HUNT.get(date)
-    let ids = persisted ? JSON.parse(persisted) : []
+    let ids = await todayData()
     ids = ids.concat(id)
     return REPO_HUNT.put(date, JSON.stringify(ids))
   },
