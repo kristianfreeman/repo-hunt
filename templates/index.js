@@ -18,7 +18,7 @@ const repoTemplate = (
            ? `<span></span>`
            : `<span class="cursor-pointer upvote">▲</span>`
        }
-       <a class="text-lg" href="${url}">${name}</a>
+       <a class="text-lg text-blue-800 hover:text-blue-600 hover:underline" href="${url}">${name}</a>
      </div>
      <div class="pb-1 text-sm">
        ${description}
