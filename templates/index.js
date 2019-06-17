@@ -2,6 +2,8 @@ const layout = require('./layout')
 const uuid = require('uuid/v3')
 const orderRepos = (a, b) => a.votes_count < b.votes_count
 
+const illustration = require('./illustration')
+
 const dateFormat = submitted_at =>
   new Date(submitted_at).toLocaleDateString('en-us')
 
@@ -49,15 +51,23 @@ const upvoteScript = `
   </script>
 `
 
-const template = (repos, request) =>
-  layout(`
+const template = (repos, request) => {
+  const renderedRepos = repos
+    .sort(orderRepos)
+    .map(repo => repoTemplate(repo, request))
+
+  const illustrationContainer = `
+    <div class="flex mt-8 items-center justify-center">
+      ${illustration}
+    </div>
+  `
+
+  return layout(`
   <div>
-    ${(repos || [])
-      .sort(orderRepos)
-      .map(repo => repoTemplate(repo, request))
-      .join('')}
+    ${repos.length ? renderedRepos.join('') : illustrationContainer}
     ${upvoteScript}
   </div>
 `)
+}
 
 module.exports = template
