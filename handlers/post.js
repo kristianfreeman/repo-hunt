@@ -1,5 +1,5 @@
 const headers = { 'Content-Type': 'text/html' }
-const template = require('../templates/post.js')
+const template = require('../templates/post')
 
 const handler = request => {
   try {
