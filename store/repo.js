@@ -11,15 +11,7 @@ class Repo {
     return persisted ? new Repo({ ...repo }) : null
   }
 
-  constructor({
-    id,
-    description,
-    name,
-    submitted_at,
-    url,
-    voters,
-    votes_count,
-  }) {
+  constructor({ id, description, name, submitted_at, url }) {
     if (!name) {
       throw new Error(`Missing name in data`)
     }
@@ -39,8 +31,6 @@ class Repo {
     this.description = description
     this.name = name
     this.submitted_at = submitted_at || Number(new Date())
-    this.voters = voters || []
-    this.votes_count = votes_count || 0
     this.url = url
   }
 
