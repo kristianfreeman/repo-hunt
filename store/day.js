@@ -20,6 +20,7 @@ module.exports = {
   },
 
   add: async function(id) {
+    const date = today()
     let ids = await todayData()
     ids = ids.concat(id)
     return REPO_HUNT.put(date, JSON.stringify(ids))

@@ -2,8 +2,6 @@ const layout = require('./layout')
 const uuid = require('uuid/v3')
 const orderRepos = (a, b) => b.votes_count - a.votes_count
 
-const illustration = require('./illustration')
-
 const dateFormat = submitted_at =>
   new Date(submitted_at).toLocaleDateString('en-us')
 
@@ -11,20 +9,20 @@ const repoTemplate = (
   { description, id, name, submitted_at, url, voters, votes_count },
   request
 ) =>
-  `<div class="repo py-2" data-repo-id="${id}">
-     <div class="pb-1">
+  `<div class="section" data-repo-id="${id}">
+     <div>
        ${
          voters.find(voter => voter === request.headers.get('CF-Connecting-IP'))
            ? `<span></span>`
            : `<span class="cursor-pointer upvote">▲</span>`
        }
-       <a class="text-lg text-blue-800 hover:text-blue-600 hover:underline" href="${url}">${name}</a>
+       <a href="${url}">${name}</a>
      </div>
-     <div class="pb-1 text-sm">
+     <div>
        ${description}
      </div>
      <div>
-       <span class="text-sm">
+       <span class="is-size-7">
          ${votes_count} votes ·
          Submitted ${dateFormat(submitted_at)}</span>
      </div>
@@ -56,15 +54,13 @@ const template = (repos, request) => {
     .sort(orderRepos)
     .map(repo => repoTemplate(repo, request))
 
-  const illustrationContainer = `
-    <div class="flex mt-8 items-center justify-center">
-      ${illustration}
-    </div>
-  `
-
   return layout(`
   <div>
-    ${repos.length ? renderedRepos.join('') : illustrationContainer}
+    ${
+      repos.length
+        ? renderedRepos.join('')
+        : `<p>No repos have been submitted yet!</p>`
+    }
     ${upvoteScript}
   </div>
 `)
