@@ -9,11 +9,6 @@ const todayData = async () => {
 }
 
 module.exports = {
-  clear: function() {
-    const date = today()
-    REPO_HUNT.put(date, JSON.stringify([]))
-  },
-
   getRepos: async function() {
     const ids = await todayData()
     return ids.length ? Repo.findMany(ids) : []

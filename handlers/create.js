@@ -12,8 +12,8 @@ const handler = async request => {
     }
 
     const data = qs.parse(body)
-    const repo = new Repo(data)
 
+    const repo = new Repo(data)
     await repo.save()
     await Day.add(repo.id)
 

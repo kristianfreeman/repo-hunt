@@ -26,12 +26,6 @@ const layout = body => `
         ${body}
       </div>
     </div>
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>Find the source for this project on <a href="https://github.com/signalnerve/repo-hunt">GitHub</a></p>
-        <p><a href="https://workers.cloudflare.com">Built with Cloudflare Workers ☁️👷‍♀️</a></p>
-      </div>
-    </footer>
   </body>
 </html>
 `

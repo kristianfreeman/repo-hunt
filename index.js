@@ -8,14 +8,13 @@ addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
 
-async function handleRequest(request) {
+function handleRequest(request) {
   try {
     const r = new Router()
     r.get('/', index)
     r.get('/post', post)
     r.post('/repo', create)
-    const resp = await r.route(request)
-    return resp
+    return r.route(request)
   } catch (err) {
     return new Response(err)
   }

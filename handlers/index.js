@@ -1,13 +1,12 @@
 const headers = { 'Content-Type': 'text/html' }
-const template = require('../templates/index.js')
-const uuid = require('uuid/v4')
+const template = require('../templates/index')
 
 const Day = require('../store/day')
 
-const handler = async request => {
+const handler = async () => {
   try {
     let repos = await Day.getRepos()
-    return new Response(template(repos, request), { headers })
+    return new Response(template(repos), { headers })
   } catch (err) {
     return new Response(`Error! ${err} for ${JSON.stringify(repos)}`)
   }
