@@ -1,6 +1,6 @@
 const Repo = require('./repo')
 
-const today = () => new Date().toLocaleDateString()
+const today = () => '1/1/2019'
 
 const todayData = async () => {
   const date = today()
