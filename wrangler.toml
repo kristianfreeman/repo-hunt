@@ -2,3 +2,7 @@ name = "repo-hunt"
 type = "webpack"
 private = false
 account_id = "dc56444c4c955a1653106ccf997c1067"
+
+[[kv-namespaces]]
+binding = "REPO_HUNT"
+id = "ef57c5ecaa21468bb93597c1656a321b"
